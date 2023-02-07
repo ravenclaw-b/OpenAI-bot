@@ -15,7 +15,7 @@ client = discord.Client(intents=discord.Intents.all())
 prompt=""
 
 def davinci(prompt):
-   response =  openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=1000)
+   response =  openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=500)
    with open("logs.txt", "a") as f:
       f.write(str(response))
    return response["choices"][0]["text"]
