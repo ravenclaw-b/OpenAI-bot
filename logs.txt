@@ -825,4 +825,22 @@
     "prompt_tokens": 5,
     "total_tokens": 108
   }
+}{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "text": "\n\nYes, I am still alive!"
+    }
+  ],
+  "created": 1676575021,
+  "id": "cmpl-6ke2Xb08ymrZc2iE4teL6iUV9g5TB",
+  "model": "text-davinci-003",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 9,
+    "prompt_tokens": 4,
+    "total_tokens": 13
+  }
 }
