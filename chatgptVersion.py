@@ -37,8 +37,7 @@ async def on_ready():
 async def on_message(message):
    msg = message.content
    if msg.startswith("!gpt"):
-       #await message.channel.send(
-       gpt(context, msg.split("!gpt")[1])[-1]["content"]
+       await message.channel.send(gpt(context, msg.split("!gpt")[1])[-1]["content"])
        print(gpt(context, msg.split("!gpt")[1]))
 
 client.run(os.getenv("TOKEN"))
