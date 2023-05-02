@@ -3,6 +3,7 @@ import os
 import discord
 import datetime
 from dotenv import load_dotenv
+from imageGen import imagine
 
 # Load environment variables from .env file
 load_dotenv()
@@ -18,8 +19,8 @@ startTime = str(datetime.datetime.now()).split(".")[0]
 
 # Initialize context with system message
 context = [
-          {"role": "system", "content": "You are a helpful assistant!"}
-      ]
+  {"role": "system", "content": "You are a helpful assistant!"}
+]
 
 # Open file for logging messages
 fhandle = open(f"data/textlogs/log: {startTime}.txt", "a")
@@ -32,8 +33,8 @@ def gpt(messages, prompt):
   context = messages
   context.append({"role": "user", "content": prompt})
   response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=context
+      model="gpt-3.5-turbo",
+      messages=context
   )
 
   # Print response to console and write to log file
@@ -46,15 +47,17 @@ def gpt(messages, prompt):
 # Event handler for when Discord client is ready
 @client.event
 async def on_ready():
-   print("Bot is ready. \n")
+  print("Bot is ready. \n")
 
 # Event handler for when a message is received
 @client.event
 async def on_message(message):
-   msg = message.content
-   if msg.startswith("!gpt"):
-       # Generate response using GPT-3 and send it to the channel
-       await message.channel.send(gpt(context, msg.split("!gpt")[1])[-1]["content"])
+  msg = message.content
+  if msg.startswith("!gpt"):
+      # Generate response using GPT-3 and send it to the channel
+      await message.channel.send(gpt(context, msg.split("!gpt")[1])[-1]["content"])
+  elif msg.startswith("!imagine"):
+      await message.channel.send(imagine(msg.split("!imagine ")[1]))
 
 # Start Discord client with token from environment variable
 client.run(os.getenv("TOKEN"))
