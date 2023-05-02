@@ -1,0 +1,5 @@
+Bot started at 2023-05-02 13:04:27 
+ 
+ 
+User: !imagine a dolphin riding a horse 
+Bot: File created and message sent in discord.

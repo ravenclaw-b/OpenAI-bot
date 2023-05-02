@@ -33,7 +33,7 @@ def gpt(messages, prompt):
   context = messages
   context.append({"role": "user", "content": prompt})
   response = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo",
+      model="gpt-4Pl",
       messages=context
   )
 
@@ -54,7 +54,7 @@ async def on_ready():
 async def on_message(message):
   msg = message.content
   if msg.startswith("!gpt"):
-      # Generate response using GPT and send it to the channel
+      # Generate response using and send it to the channel
       await message.channel.send(gpt(context, msg.split("!gpt")[1])[-1]["content"])
   elif msg.startswith("!imagine"):
       await message.channel.send(imagine(msg.split("!imagine ")[1]))
