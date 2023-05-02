@@ -28,7 +28,7 @@ fhandle = open(f"data/textlogs/log: {startTime}.txt", "a")
 # Write start time to log file
 fhandle.write(f"Bot started at {startTime} \n \n \n")
 
-# Function to generate response using OpenAI GPT-3 model
+# Function to generate response using OpenAI API
 def gpt(messages, prompt):
   context = messages
   context.append({"role": "user", "content": prompt})
@@ -54,10 +54,13 @@ async def on_ready():
 async def on_message(message):
   msg = message.content
   if msg.startswith("!gpt"):
-      # Generate response using GPT-3 and send it to the channel
+      # Generate response using GPT and send it to the channel
       await message.channel.send(gpt(context, msg.split("!gpt")[1])[-1]["content"])
   elif msg.startswith("!imagine"):
       await message.channel.send(imagine(msg.split("!imagine ")[1]))
+      fhandle.write(f"User: {msg} \nBot: File created and message sent in discord.\n")
+  elif msg.startswith("!shutdown"):
+      quit()
 
 # Start Discord client with token from environment variable
 client.run(os.getenv("TOKEN"))
