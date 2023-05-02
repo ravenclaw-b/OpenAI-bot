@@ -1,0 +1,5 @@
+Bot started at 2023-05-02 14:41:41 
+ 
+ 
+User: !imagine a sloth eating a banana comic book style 
+Bot: File created and message sent in discord.
